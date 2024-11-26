@@ -1,0 +1,49 @@
+{% extends "html/html_struct.html" %}
+
+{% block content%}
+    {% if object_list %}
+        <table id="main-data-table">
+            <thead>
+            <tr>
+                <th></th>
+                <th>Usuario</th>
+                <th>Etiqueta</th>
+                <th>URL</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th></th>
+                <th>Usuario</th>
+                <th>Etiqueta</th>
+                <th>URL</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {% for reg in object_list %}
+                <tr>
+                    <td><input class="form-check-input" type="checkbox" value="{{ reg.pk }}" name="pk" /></td>
+                    <td>{{ reg.user.profile }}</td>
+                    <td>
+                        {% if mine %}
+                            <a href="{% url 'mine_fav_read' reg.pk %}">{{ reg.etiqueta }}</a></td>
+                        {% else %}
+                            <a href="{% url 'favorito_read' reg.pk %}">{{ reg.etiqueta }}</a></td>
+                        {% endif %}
+                    <td>{{ reg.url }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <script type="text/javascript">
+        {% if mine %}
+            let update_url = `{% url 'mine_fav_update' pk=0 %}`;
+            let delete_many_url = `{% url 'mine_fav_delete_many' %}`;
+        {% else %}
+            let update_url = `{% url 'favorito_update' pk=0 %}`;
+            let delete_many_url = `{% url 'favorito_delete_many' %}`;
+        {% endif %}
+    </script>
+{% endblock %}
