@@ -27,14 +27,13 @@ let add_2_fav = () => {
 };
 
 let check_is_fav = () => {
+    $("button.fav-out").removeClass('d-none');
+    $("button.fav-in").addClass('d-none');
     for(let lnk of $(`.sb-sidenav-menu-favs a.fav-lnk`)) {
         if(lnk.href === location.href) {
             $("button.fav-in").removeClass('d-none');
             $("button.fav-out").addClass('d-none');
             break;
-        } else {
-            $("button.fav-out").removeClass('d-none');
-            $("button.fav-in").addClass('d-none');
         }
     }
 }
