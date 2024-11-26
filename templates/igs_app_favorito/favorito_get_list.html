@@ -1,0 +1,7 @@
+{% for link in user.mis_favoritos.all %}
+    {% if request.get_host in link.url %}
+        {{ link.a_internal }}
+    {% else %}
+        {{ link.a_external }}
+    {% endif %}
+{% endfor %}
