@@ -27,5 +27,6 @@ def migration():
         Permission.objects.get(codename="delete_ad_mine_fav"),
     ]
 
-    gpo = Group.objects.get("Basico")
-    gpo.permissions.add(mine_perms)
+    gpo = Group.objects.get(name="Basico")
+    for p in mine_perms:
+        gpo.permissions.add(p)

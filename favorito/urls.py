@@ -1,7 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import permission_required
 from django.urls import include
 from django.urls import path
-from django_plotly_dash.access import login_required
 
 from .vw import UsrAddFav
 from .vw import UsrCreate
