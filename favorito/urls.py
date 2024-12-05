@@ -30,12 +30,12 @@ urlpatterns = views.create_urls(app_label) + [
         name=f"{obj}_get"),
     path(
         'add/',
-        permission_required(f"{app_label}.add_ad_mine_{obj}")(
+        permission_required(f"{app_label}.add_ad_mine_fav", '/')(
             UsrAddFav.as_view()),
         name=f"{obj}_add"),
     path(
         'delete/',
-        permission_required(f"{app_label}.delete_ad_mine_{obj}")(
+        permission_required(f"{app_label}.delete_ad_mine_fav", '/')(
             UsrDeleteFav.as_view()),
         name=f"{obj}_delete"),
 ]
