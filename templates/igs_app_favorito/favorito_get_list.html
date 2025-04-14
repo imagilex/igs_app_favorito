@@ -1,3 +1,4 @@
+<!-- igs_app_favorito/favorito_get_list.html start -->
 {% for link in user.mis_favoritos.all %}
     {% if request.get_host in link.url %}
         {{ link.a_internal }}
@@ -5,3 +6,4 @@
         {{ link.a_external }}
     {% endif %}
 {% endfor %}
+<!-- igs_app_favorito/favorito_get_list.html end -->
